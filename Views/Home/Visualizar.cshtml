@@ -1,0 +1,30 @@
+﻿@model Core.Entities.Usuarios.Usuario
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Amigo Secreto</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+    <div style="text-align:center;font-family: 'Roboto', sans-serif;">
+        @if (Model.AmigoSecretoID.HasValue)
+        {
+            <h3>Olá @Model.Nome, seu amigo secreto é:</h3>
+            <br />
+            <h1 style="text-transform:uppercase;">@Model.AmigoSecreto.Nome</h1>
+            <br />
+            <a href="javascript:window.refresh();" style="text-transform:uppercase;display:block;padding:10px;background:#000;color:#fff;text-decoration:none;">clique aqui para esconder</a>
+        }
+        else
+        {
+            <h1>Seu amigo secreto ainda não foi sorteado.</h1>
+        }
+    </div>
+</body>
+</html>

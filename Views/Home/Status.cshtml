@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Core.Entities.Usuarios.Usuario>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Amigo Secreto - Status</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+    <div style="text-align:center;font-family: 'Roboto', sans-serif;">
+        <h1>Bemvindo ao Amigo Secreto</h1>
+        <br />
+        <table border="1" cellpadding="0" cellspacing="0" style="width:100%;">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Sorteado</th>
+                    <th>Vsualizado</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var usuario in Model.OrderBy(u => u.Nome))
+                {
+                    <tr>
+                        <td>@usuario.Nome</td>
+                        <td>@(usuario.AmigoSecretoID.HasValue ? "sim" : "")</td>
+                        <td>@(usuario.Visualizado ? "sim" : "")</td>
+                        <td>@String.Format("https://amigosecretofamilia.azurewebsites.net/visualizar?codigo={0}", usuario.Codigo)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
